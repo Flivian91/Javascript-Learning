@@ -23,7 +23,7 @@ addtaskBtn.addEventListener("click", () => {
     saveData();
     const html = `
     <li id="${tasks[tasks.length - 1].id}">
-      ${tasks[tasks.length - 1].task}<span class="this-date">${tasks[tasks.length - 1].date}</span> <span class="close-icon">×</span>
+      ${tasks[tasks.length - 1].task}<span class="this-date">${(tasks[tasks.length - 1].date - new Date().getDate() > 0) ? daysOfTheWeek[tasks[tasks.length - 1].date - 1] : "Today" }</span> <span class="close-icon">×</span>
     </li>
     `;
     listContainer.insertAdjacentHTML("afterbegin", html);
