@@ -81,6 +81,6 @@ function clearLocalStorage() {
 }
 
 //console.log("COntents saved" + (localStorage.getItem("tasks")));
-console.log(daysOfTheWeek[new Date().getDay()-1]);
+//console.log(daysOfTheWeek[new Date().getDay()-1]);
 // clearLocalStorage()
 // window.addEventListener("DOMContentLoaded", updateTask);
