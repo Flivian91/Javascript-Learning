@@ -48,6 +48,7 @@ body {
   border-radius: 3rem;
   padding-left: 2rem;
   margin-bottom: 2.5rem;
+  border: 2px solid transparent;
 }
 input {
   flex: 1;
@@ -95,12 +96,12 @@ ul li::before {
 }
 ul li.checked {
   color: #555;
-  /* text-decoration: line-through; */
+  text-decoration: line-through;
 }
 ul li.checked::before{
   background-image: url(./checked.png);
 }
-.delete {
+.close-icon {
   position: absolute;
   right: 0;
   top: .7rem;
@@ -113,12 +114,11 @@ ul li.checked::before{
   line-height: 4rem;  
   text-align: center;
   border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
 }
 .close-icon:hover {
   background-color: rgb(222, 217, 217);
-}
-.delete {
-  /* float: right; */
-  border-radius: 50%;
 }

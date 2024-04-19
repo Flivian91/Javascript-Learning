@@ -4,7 +4,6 @@ let listContainer = document.getElementById("list-container");
 let toDo = document.getElementById("input-box");
 const deleteBtn = document.querySelector(".delete");
 
-
 //create an array of object in key-value pairs to be used to store in the local storage
 
 let tasks = [];
@@ -14,20 +13,19 @@ let i = 0;
 
 seePreviousTasks();
 
-function seePreviousTasks(){
+function seePreviousTasks() {
   const prevTasks = JSON.parse(localStorage.getItem("Tasks"));
   console.log(prevTasks);
 
   //here i load the tasks saved from local storage to the tasks array
-  if(prevTasks!=null)tasks = prevTasks;
+  if (prevTasks != null) tasks = prevTasks;
 
   //for debugging purposes
   console.log("Task in array: " + tasks);
 
-  if(tasks!=null){
-
+  if (tasks != null) {
     // load a the tasks in the li element, kama ukona a better way of doing this propose
-    for(var j= 0; j<tasks.length;j++,i++){
+    for (var j = 0; j < tasks.length; j++, i++) {
       const html = `
     <li class="parentEl" id= ${i}>
     <span class="text">${tasks[j]}</span> 
@@ -35,16 +33,12 @@ function seePreviousTasks(){
     </li>
     `;
 
-    listContainer.insertAdjacentHTML("afterbegin", html);
-
+      listContainer.insertAdjacentHTML("afterbegin", html);
     }
   }
-
-  }
-
+}
 
 addBtn.addEventListener("click", () => {
-
   // Get the value of the input field
   const value = toDo.value;
   toDo.value = "";
@@ -60,15 +54,14 @@ addBtn.addEventListener("click", () => {
   listClick();
 
   //store values in the tasks object
-  if(tasks === null) tasks[0] = value;
+  if (tasks === null) tasks[0] = value;
   tasks.push(value);
   i++;
 
   //implement the local storage fucntionality each time the add button is clicked
-  localStorage.setItem("Tasks",JSON.stringify(tasks));
+  localStorage.setItem("Tasks", JSON.stringify(tasks));
 
   /*for debugging purposes*/ console.log("In Tasks array: " + tasks);
-
 });
 
 // Function to handle clicks on the List container "Using Event Delegation to listen for click"
@@ -80,9 +73,9 @@ function listClick() {
     if (!clicked) return;
     clicked.classList.toggle("checked");
 
-    /*for debugging*/console.log(clicked.id);
+    /*for debugging*/ console.log(clicked.id);
     let delItem = document.getElementById(clicked.id).innerText;
-    /*for debugging*/console.log(delItem);
+    /*for debugging*/ console.log(delItem);
 
     //here i added another parameter yenye itakuwa inahold value ya the selected item
     deleteFun(clicked, delItem);
@@ -96,27 +89,25 @@ function deleteFun(parent, delItem) {
     if (!click) return;
     parent.remove();
 
-    //for debugging 
+    //for debugging
     console.log(delItem);
-    
+
     //k ni indexing for while loop
-    var k=0;
+    var k = 0;
 
     //in this loop, i loop through the array until nipate value ye delItem
     //during which i delete it and break out of the loop
-    while(tasks!=null){
-      if(tasks[k] === delItem){
-        tasks.splice(k,1);
+    while (tasks != null) {
+      if (tasks[k] === delItem) {
+        tasks.splice(k, 1);
         break;
       }
       k++;
     }
 
     //i save the new array overwriting the other one
-    localStorage.setItem("Tasks",JSON.stringify(tasks));
-    /*for debugging*/console.log("New array: " + tasks);
-
-
+    localStorage.setItem("Tasks", JSON.stringify(tasks));
+    /*for debugging*/ console.log("New array: " + tasks);
   });
 }
 
