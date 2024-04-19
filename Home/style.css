@@ -122,3 +122,10 @@ ul li.checked::before{
 .close-icon:hover {
   background-color: rgb(222, 217, 217);
 }
+.this-date{
+  position: absolute;
+  right: 5rem;
+  top: 1.5rem;
+  font-size: 1.3rem;
+  color: hsla(0, 0%, 50%, 0.753);
+}
