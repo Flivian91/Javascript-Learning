@@ -23,7 +23,7 @@ addtaskBtn.addEventListener("click", () => {
     saveData();
     const html = `
     <li id="${tasks[tasks.length - 1].id}">
-      ${tasks[tasks.length - 1].task}<span class="this-date">${(tasks[tasks.length - 1].date - new Date().getDate() > 0) ? daysOfTheWeek[tasks[tasks.length - 1].date - 1] : "Today" }</span> <span class="close-icon">×</span>
+      ${tasks[tasks.length - 1].task}<span class="this-date">${(new Date().getDate() - tasks[tasks.length - 1].date > 0) ? tasks[tasks.length - 1].date : "Today" }</span> <span class="close-icon">×</span>
     </li>
     `;
     listContainer.insertAdjacentHTML("afterbegin", html);
@@ -55,7 +55,7 @@ function updateTask() {
   tasks.forEach((item) => {
     const html = `
     <li id="${item.id}">
-      ${item.task}<span class="this-date">${((item.date - new Date().getDate() > 0) ? daysOfTheWeek[item.date - 1] : "Today")}</span> <span class="close-icon">×</span>
+      ${item.task}<span class="this-date">${(( new Date().getDate() - item.date  > 0) ? item.date : "Today")}</span> <span class="close-icon">×</span>
     </li>
     `;
     listContainer.insertAdjacentHTML("afterbegin", html);
@@ -80,7 +80,7 @@ function clearLocalStorage() {
   localStorage.removeItem("tasks");
 }
 
-//console.log("COntents saved" + (localStorage.getItem("tasks")));
+console.log("COntents saved" + (localStorage.getItem("tasks")));
 //console.log(daysOfTheWeek[new Date().getDay()-1]);
 // clearLocalStorage()
 // window.addEventListener("DOMContentLoaded", updateTask);
